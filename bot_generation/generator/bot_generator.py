@@ -11,11 +11,27 @@ from jinja2 import Environment, FileSystemLoader
 def generate_bot(bot_name: str, df: DataFrame):
     st.subheader('Data preview')
     st.dataframe(df)
-    data = {}
+    # EXERCISE
 
-    ##################
-    # YOUR CODE HERE #
-    ##################
+    data = {
+        'bot_name': bot_name,
+        'intents': [],
+    }
+    intent_index = 0
+    current_intent = None
+    for index, row in df.iterrows():
+        question = row['question']
+        answer = row['answer']
+        if answer is not np.nan:  # Next intent
+            intent_index += 1
+            current_intent = {
+                'name': f'question_{intent_index}',
+                'sentences': [question],
+                'answer': answer
+            }
+            data['intents'].append(current_intent)
+        else:
+            current_intent['sentences'].append(question)
 
     env = Environment(loader=FileSystemLoader(''))
     template = env.get_template('bot_generation/generator/bot_generation.py.j2')

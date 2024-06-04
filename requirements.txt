@@ -1,2 +1,2 @@
-besser-bot-framework==1.2.1
+besser-bot-framework==1.2.2
 streamlit-antd-components==0.3.2
