@@ -2,7 +2,7 @@
 
 [BESSER Bot Framework](https://github.com/BESSER-PEARL/BESSER-Bot-Framework) (BBF)
 
-[Documentation](https://besserbot-framework.readthedocs.io/en/latest/)
+[Documentation](https://besser-bot-framework.readthedocs.io/latest/)
 
 
 ## Project setup
@@ -56,7 +56,7 @@ Some intents may have parameters, that will be accessible from the bot states. T
 
 You can also skip this part and implement the intents "on demand" while working on the next exercise.
 
---> https://besserbot-framework.readthedocs.io/en/latest/wiki/core/intents.html
+--> https://besser-bot-framework.readthedocs.io/latest/wiki/core/intents.html
 
 ### 1.2 Create the state bodies and transitions
 
@@ -64,10 +64,10 @@ Each state has a python function (what we call the body of the state), and it wi
 
 For instance, when user X moves to 'search_products_state' (once the intent 'search_products_intent' is recognized from the 'awaiting_state') the body associated to 'search_products_state' will be executed with the session of user X as parameter
 
-Check the BBF docs to see how to define a state body --> https://besserbot-framework.readthedocs.io/en/latest/wiki/core/states.html
+Check the BBF docs to see how to define a state body --> https://besser-bot-framework.readthedocs.io/latest/wiki/core/states.html
 
-1. Create the body for **initial_state** and an automatic transition from initial_state to awaiting_state (https://besserbot-framework.readthedocs.io/en/latest/wiki/core/transitions.html)
-   initial_state's body will create a new object in the user session. We will call it 'cart' and it will be an empty dictionary. See how to do it --> https://besserbot-framework.readthedocs.io/en/latest/wiki/core/sessions.html
+1. Create the body for **initial_state** and an automatic transition from initial_state to awaiting_state (https://besser-bot-framework.readthedocs.io/latest/wiki/core/transitions.html)
+   initial_state's body will create a new object in the user session. We will call it 'cart' and it will be an empty dictionary. See how to do it --> https://besser-bot-framework.readthedocs.io/latest/wiki/core/sessions.html
    
    From initial_state, the bot will also send a message to the user: "Welcome to the shop!"
 2. Create the body for **awaiting_state**, where the bot simply sends a message "How can I assist you?". Then, you must define
@@ -80,12 +80,12 @@ Check the BBF docs to see how to define a state body --> https://besserbot-frame
 5. Now, let's implement the states to **add products to the cart**. The proposed workflow is as follows: a user can request to add a specific number of units of a product
    (e.g. "add 5 Macbooks to the cart"). Then, 5 units of that product are added to the user cart and the bot goes back to awaiting_state.
    If the user does not specify the number of units (e.g. "Add Macbook to cart"), the bot will ask for the number of units of that product, then will move to another state (set_num_units_state) to store the product into the cart, and will go back to awaiting_state.
-6. Finally, let's implement the **proceed_payment_state**, where the purchase is confirmed and the cart gets empty. Feel free to experiment here with other BBF features, like replying with buttons (see the [docs](https://besserbot-framework.readthedocs.io/en/latest/wiki/platforms/websocket_platform.html)) (e.g. "do you want to confirm the purchase?" [yes] [no])
+6. Finally, let's implement the **proceed_payment_state**, where the purchase is confirmed and the cart gets empty. Feel free to experiment here with other BBF features, like replying with buttons (see the [docs](https://besser-bot-framework.readthedocs.io/latest/wiki/platforms/websocket_platform.html)) (e.g. "do you want to confirm the purchase?" [yes] [no])
 
 ### 1.3 Extra exercise
 
 So far, the bot has been using the default intent classifier (SimpleIntentClassifier). BBF includes LLM-based intent classifiers that can rely on OpenAI or HuggingFace LLMs.
-You can read the [intent classifier docs](https://besserbot-framework.readthedocs.io/en/latest/wiki/nlp/intent_classification.html) to learn how to use it and try to use the HuggingFace LLM-based Intent Classifier in the awaiting_state (since this one is the most complex to recognize the user intent).
+You can read the [intent classifier docs](https://besser-bot-framework.readthedocs.io/latest/wiki/nlp/intent_classification.html) to learn how to use it and try to use the HuggingFace LLM-based Intent Classifier in the awaiting_state (since this one is the most complex to recognize the user intent).
 It only requires you to create a HF account and generate a token to use the API. Then, in the [config.ini](config.ini) file you can set your HF API key and the desired LLM to use (you can try with mistralai/Mixtral-8x7B-Instruct-v0.1)
 
 As explained in the docs, the LLMIntentClassifier works with simple intent descriptions, without the need of intent training sentences.
@@ -99,7 +99,7 @@ Each state has a body function, but also a fallback body function. It will be ru
 
 For example, when the bot is in awaiting_state and the user message is not properly classified into one of the defined intents, the fallback body of awaiting_state will be executed, and the bot will then wait for another user message.
 
-Read the docs to learn how to define a custom fallback method for a specific state --> https://besserbot-framework.readthedocs.io/en/latest/wiki/core/states.html#state-fallback-body
+Read the docs to learn how to define a custom fallback method for a specific state --> https://besser-bot-framework.readthedocs.io/latest/wiki/core/states.html#state-fallback-body
 
 As an optional exercise, you can create a fallback body for awaiting_state that will send the user message to an LLM (e.g. to a HuggingFace LLM through its free API), and the generated answer by the LLM will be replied to the user.
 You can send the user query to the LLM with additional context (e.g. "You are a shopping assistant. I want you to help a user, who sent me this message...")
