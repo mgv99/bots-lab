@@ -7,7 +7,7 @@
 
 ## Project setup
 
-- You will need a Python version >= 3.10
+- You will need a Python version 3.10 or 3.11
 - Clone this repository
 - Create a new project in your IDE.
 - We recommend to create a virtual environment for the exercises (e.g. [venv](https://docs.python.org/3/library/venv.html),
